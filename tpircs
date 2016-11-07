@@ -1,0 +1,16 @@
+#!/bin/bash
+
+read -p "Insert a list of words: " -a wordsArray
+
+counter=0
+for word in ${wordsArray[*]} ; do
+	newWord=""
+	maxIndex=$(( ${#word}-1 ))
+	for (( i=maxIndex; i>=0; i-- )) ; do
+		newWord+="${word:$i:1}"
+	done
+	wordsArray[counter]=$newWord
+	((counter++))
+done
+
+echo "${wordsArray[*]}"
