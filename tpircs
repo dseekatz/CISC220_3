@@ -1,16 +1,22 @@
 #!/bin/bash
 
+# Question 2
+# This script reads a list of words from the user and outputs each word backwards
+
+# Read the user input and store it in an array
 read -p "Insert a list of words: " -a wordsArray
 
+# Get each individual word and reverse them one by one
 counter=0
 for word in ${wordsArray[*]} ; do
 	newWord=""
 	maxIndex=$(( ${#word}-1 ))
-	for (( i=maxIndex; i>=0; i-- )) ; do
-		newWord+="${word:$i:1}"
+	for (( i=maxIndex; i>=0; i-- )) ; do	# Get each letter in reverse from the original
+		newWord+="${word:$i:1}"		# word and store it in a new variable
 	done
-	wordsArray[counter]=$newWord
-	((counter++))
+	wordsArray[counter]=$newWord		# Put the new, reversed word in the array
+	((counter++))				# in place of the old word
 done
 
-echo "${wordsArray[*]}"
+# Display the reversed words
+echo "Output: ${wordsArray[*]}"
