@@ -1,28 +1,34 @@
 #!/bin/bash
 
 read -p "Enter your password, hit return to end: " -s PASSWORD
-echo $PASSWORD
 strength=0
 specials=("&" "#" "@" "$" "*" "+" "=" "-" "%")
 if ((${#PASSWORD} > 7)) ; then
- strength++;
+	((strength = strength + 1));
 fi
 
-for (( n=0 ; n <=${#PASSWORD} ; n++ )); do
-	for m in {0..9}; do
-		if [[${PASSWORD:n:1} == m]]; then
-			strength++
-			break;
-		fi;
-	done;
+numNums=$(echo $PASSWORD | grep -o -E '[0-9]+')
+if ((${#numNums} > 0)); then
+	((strength = strength + 1));
+fi
+
+for special in "${specials[@]}"; do
+	numSpecial=$(echo $PASSWORD | grep -o -E "$special")
+	if ((${#numSpecial} > 0)); then
+		((strength = strength + 1))
+		break
+	fi
 done
 
-for (( n=0 ; n <=${#PASSWORD} ; n++ )); do
-        for char in specials; do
-                if [[${PASSWORD:n:1} == char]]; then
-                        strength++
-                        break;
-                fi;
-        done;
-done
+echo
+if (( $strength < 1 )) ; then
+	echo Your password does not satisfy any requirements.
+elif (( $strength < 2 )) ; then
+	echo Your password is weak.;
+elif (( $strength < 3 )) ; then
+	echo Your password is of medium strength.;
+else
+	echo Your password is strong!
+fi
+
 
