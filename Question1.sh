@@ -1,4 +1,8 @@
 #!/bin/bash
+# David Seekatz		16das4 20037710
+# Sean Eylott	    	13se18 10141657
+# Simon Ungar         	14seau 10149546
+# Brooke Resendes     	13brr2 10141112
 
 # This script finds all "lucky" numbers between 1,000 and 10,000, inclusive.
 # A lucky number is defined as a number whose digits recursively sum to 7.
