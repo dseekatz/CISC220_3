@@ -1,4 +1,8 @@
 #!/bin/bash
+# David Seekatz		16das4 20037710
+# Sean Eylott	    	13se18 10141657
+# Simon Ungar         	14seau 10149546
+# Brooke Resendes     	13brr2 10141112
 
 # This script checks and validates passwords. It takes the password as hidden input and checks the following conditions:
 #[1] Minimum length of 8 characters.
